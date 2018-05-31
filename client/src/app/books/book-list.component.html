@@ -1,0 +1,61 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{pageTitle}}
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-2">Filter by:</div>
+      <div class="col-md-4">
+        <input [(ngModel)]='listFilter'>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Filtered by: {{listFilter}}</h3>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table" *ngIf="books && books.length">
+        <thead>
+          <tr>
+            <th>
+              <button class="btn btn-primary" (click)='toggleImage()'>
+                {{showImage ? 'Hide' : 'Show'}} Image
+              </button>
+            </th>
+            <th>Book Title</th>
+            <th>Author</th>
+            <th>Number of Pages</th>
+            <th>Price</th>
+            <th>5 Star Rating</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor = 'let book of filteredBooks'>
+            <td>
+              <img *ngIf='showImage'
+                  [src]="book.imageUrl ? book.imageUrl : 'http://ichef.bbci.co.uk/wwfeatures/wm/live/1280_640/images/live/p0/2v/dp/p02vdpfn.jpg'"
+                   [title]='book.title'
+                  [style.width.px]='imageWidth' [style.margin]='imageMargin'>
+
+
+            </td>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.numberOfPages}}</td>
+            <td>{{book.price | currency:'USD':true:'1.2-2'}}</td>
+            <td>
+              <app-star [rating]='book.starRating'
+                        (ratingClicked)='onRatingClicked($event)'>
+              </app-star>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
