@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {IBook} from './book';
+import {IBook} from '../books/book';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {tap, catchError} from 'rxjs/operators';

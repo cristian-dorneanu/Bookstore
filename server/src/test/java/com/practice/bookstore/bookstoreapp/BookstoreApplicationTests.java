@@ -1,4 +1,4 @@
-package com.practice.bookstore.bookstore;
+package com.practice.bookstore.bookstoreapp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

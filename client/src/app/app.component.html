@@ -3,6 +3,13 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <app-books></app-books>
+
+  <div *ngIf="!user" id="okta-login-container"></div>
+
+  <div *ngIf="user">{{user}}
+    <button (click)="logout()">Logout</button>
+    <app-books></app-books>
+  </div>
+
 </div>
 
